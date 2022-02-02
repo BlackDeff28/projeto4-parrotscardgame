@@ -1,7 +1,7 @@
 let numeroCartas = 0
 
 function verificarCarta() {
-for(numeroCartas;numeroCartas < 4 || numeroCartas > 14;) {
+for(numeroCartas;numeroCartas < 4 || numeroCartas > 14|| numeroCartas & 2 !== 0;) {
     numeroCartas = prompt("Quantas cartas voce quer? (4-14)")
 }
 }
