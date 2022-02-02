@@ -14,6 +14,7 @@ body {
     display: flex;
     margin-top: 47px;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -31,4 +32,15 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #A7E9AF;
+}
+
+@media (max-width:574px) {
+    
+    .imagens{
+        flex-direction: column;
+    }
+
+    .texto {
+        font-size: 36px;
+    }
 }
