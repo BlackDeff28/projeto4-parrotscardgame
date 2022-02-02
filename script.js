@@ -10,7 +10,7 @@ for(numeroCartas;numeroCartas < 4 || numeroCartas > 14;) {
 function colocarCartas() {
     const imagem = document.querySelector(".imagens")
     for(let i = 0; i < numeroCartas;i++){
-        imagem.innerHTML += "<img src='Media/front.png'>"
+        imagem.innerHTML += "<div class='carta'><img src='Media/front.png'></div>"
     }
 }
 

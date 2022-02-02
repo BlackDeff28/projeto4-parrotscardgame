@@ -1,0 +1,34 @@
+body {
+    background-color: #EEF9BF;
+}
+
+.texto {
+    font-size: 56px;
+    text-align: center;
+    color: #75B79E;
+    font-family: roboto;
+    font-weight: 700;
+}
+
+.imagens {
+    display: flex;
+    margin-top: 47px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.carta img {
+    width: 100px;
+    height: 100px;
+}
+
+.carta {
+    width: 117px;
+    height: 146px;
+    margin-right: 34px;
+    margin-bottom: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A7E9AF;
+}
