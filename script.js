@@ -3,6 +3,7 @@ let gifsSelecionados = []
 let gifClicado = []
 let paresFeitos = []
 let numeroJogadas = 0
+let relogio = 0
 let carta1
 let carta2
 let gifs = ["bobrossparrot.gif", "bobrossparrot.gif", "explodyparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "metalparrot.gif", "revertitparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "unicornparrot.gif"]
@@ -19,23 +20,30 @@ function sortearCarta() {
         gifsSelecionados.sort(comparador)
     }
 }
-
-function colocarCartas() {
-    const imagem = document.querySelector(".imagens")
-    sortearCarta()
-    for(let i = 0; i < numeroCartas;i++){
-        imagem.innerHTML += `<div class="barreira"></div><div class="carta" onclick = virarCarta(this)>
-        <img class="foto frente" src='Media/front.png' />
-        <img class="foto verso" src='Media/${gifsSelecionados[i]}' />
-        </div>`
-    }
-}
-
 function comparador() { 
 	return Math.random() - 0.5; 
 }
 
 gifsSelecionados.sort(comparador)
+
+function colocarCartas() {
+    const imagem = document.querySelector(".imagens")
+    const titulo = document.querySelector(".titulo")
+    titulo.innerHTML += `<p class="relogio">${relogio}s</p>`
+    sortearCarta()
+    imagem.innerHTML += `<div class="barreira"></div>`
+    for(let i = 0; i < numeroCartas;i++){
+        imagem.innerHTML += `<div class="carta" onclick = virarCarta(this)>
+        <img class="foto frente" src='Media/front.png' />
+        <img class="foto verso" src='Media/${gifsSelecionados[i]}' />
+        </div>`
+    }
+    intervalo = setInterval(relogioTimer, 1000)
+}
+
+function relogioTimer(){
+    document.querySelector(".relogio").innerHTML = relogio++ + "s"
+}
 
 verificarCarta()
 colocarCartas()
@@ -81,13 +89,14 @@ function compararPar(){
 
 function mostrarNumeroJogadas(){
     if(paresFeitos.length === (numeroCartas / 2)){
-        alert(`Parabens, você ganhou em ${numeroJogadas} jogadas!!!`)
+        alert(`Parabens, você ganhou em ${relogio - 1} segundos e ${numeroJogadas} jogadas!!!`)
     }
 }
 
 function finalizarJogo(){
     if(paresFeitos.length === (numeroCartas / 2)){
-        let recomecar = prompt("Quer ir novamente ? (S/N)")
+        clearInterval(intervalo)
+        let recomecar = prompt("Quer jogar novamente ? (S/N)")
         if(recomecar === "S" || recomecar === "s"){
             document.location.reload(true)
         }

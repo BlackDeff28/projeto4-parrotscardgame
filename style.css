@@ -8,6 +8,7 @@ body {
     color: #75B79E;
     font-family: roboto;
     font-weight: 700;
+    margin-right: 10px;
 }
 
 .imagens {
@@ -64,6 +65,19 @@ body {
     height: 100%;
     z-index: 1;
     background-color: transparent;
+}
+
+.titulo{    
+    position: relative;
+}
+
+.relogio {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font-size: 20px;
+    font-family: roboto;
 }
 
 @media (max-width:574px) {
