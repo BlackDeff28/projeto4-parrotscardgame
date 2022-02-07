@@ -36,9 +36,9 @@ function colocarCartas() {
     sortearCarta()
     imagem.innerHTML += `<div class="barreira"></div>`
     for(let i = 0; i < numeroCartas;i++){
-        imagem.innerHTML += `<div class="carta" onclick = virarCarta(this)>
-        <img class="foto frente" src='Media/front.png' />
-        <img class="foto verso" src='Media/${gifsSelecionados[i]}' />
+        imagem.innerHTML += `<div class="carta" data-identifier="card" onclick = virarCarta(this)>
+        <img class="foto frente" data-identifier="front-face" src='Media/front.png' />
+        <img class="foto verso" data-identifier="back-face" src='Media/${gifsSelecionados[i]}' />
         </div>`
     }
     intervalo = setInterval(relogioTimer, 1000)
