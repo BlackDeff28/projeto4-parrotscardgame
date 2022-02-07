@@ -2,6 +2,7 @@ let numeroCartas = 0
 let gifsSelecionados = []
 let gifClicado = []
 let paresFeitos = []
+let numeroJogadas = 0
 let carta1
 let carta2
 let gifs = ["bobrossparrot.gif", "bobrossparrot.gif", "explodyparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "metalparrot.gif", "revertitparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "unicornparrot.gif"]
@@ -40,6 +41,7 @@ verificarCarta()
 colocarCartas()
 
 function virarCarta(divSelecionada){
+    numeroJogadas++
     divSelecionada.querySelector(".verso").classList.add("virar-verso")
     divSelecionada.querySelector(".frente").classList.add("virar-frente")
     if(!document.querySelector(".carta1")){
@@ -71,21 +73,28 @@ function compararPar(){
         carta2.classList.remove("carta2")
         carta1.setAttribute('onclick','')
         carta2.setAttribute('onclick','')
+        mostrarNumeroJogadas()
         finalizarJogo()
     }
     document.querySelector(".barreira").style.display = "none"
 }
 
+function mostrarNumeroJogadas(){
+    if(paresFeitos.length === (numeroCartas / 2)){
+        alert(`Parabens, você ganhou em ${numeroJogadas} jogadas!!!`)
+    }
+}
+
 function finalizarJogo(){
     if(paresFeitos.length === (numeroCartas / 2)){
-       let recomecar = prompt("Quer ir novamente ? (S/N)")
-       if(recomecar === "S" || recomecar === "s"){
+        let recomecar = prompt("Quer ir novamente ? (S/N)")
+        if(recomecar === "S" || recomecar === "s"){
             document.location.reload(true)
-       }
-       else if(recomecar === "N" || recomecar === "n"){
-           alert("Tudo bem :( Tenha um bom dia <3")
-       }
-       else{
+        }
+        else if(recomecar === "N" || recomecar === "n"){
+            alert("Tudo bem :( Tenha um bom dia <3")
+        }
+        else{
             finalizarJogo()
        }
     }

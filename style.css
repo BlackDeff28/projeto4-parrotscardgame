@@ -21,6 +21,10 @@ body {
 .carta img {
     width: 100px;
     height: 100px;
+    padding: 23px 8.5px;
+    background-color: #A7E9AF;
+    border-radius: 5px;
+
 }
 
 .carta {
@@ -31,7 +35,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #A7E9AF;
     position: relative;
 }
 
