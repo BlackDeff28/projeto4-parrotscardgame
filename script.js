@@ -8,12 +8,14 @@ let carta1
 let carta2
 let gifs = ["bobrossparrot.gif", "bobrossparrot.gif", "explodyparrot.gif", "explodyparrot.gif", "fiestaparrot.gif", "fiestaparrot.gif", "metalparrot.gif", "metalparrot.gif", "revertitparrot.gif", "revertitparrot.gif", "tripletsparrot.gif", "tripletsparrot.gif", "unicornparrot.gif", "unicornparrot.gif"]
 
+//Verificar o numero de cartas selecionadas 
 function verificarCarta() {
 for(numeroCartas;numeroCartas < 4 || numeroCartas > 14|| numeroCartas % 2 !== 0;) {
     numeroCartas = prompt("Quantas cartas voce quer? (4-14)")
 }
 }
 
+// criação da aleatoriedade das cartas
 function sortearCarta() {
     for(let i = 0; i < numeroCartas;i++){
         gifsSelecionados.push(gifs[i])
@@ -26,6 +28,7 @@ function comparador() {
 
 gifsSelecionados.sort(comparador)
 
+// Criação das cartas sobre a tela
 function colocarCartas() {
     const imagem = document.querySelector(".imagens")
     const titulo = document.querySelector(".titulo")
@@ -41,13 +44,15 @@ function colocarCartas() {
     intervalo = setInterval(relogioTimer, 1000)
 }
 
+verificarCarta()
+colocarCartas()
+
+// Temporizador do jogo
 function relogioTimer(){
     document.querySelector(".relogio").innerHTML = relogio++ + "s"
 }
 
-verificarCarta()
-colocarCartas()
-
+// Criação da animação de virar carta
 function virarCarta(divSelecionada){
     numeroJogadas++
     divSelecionada.querySelector(".verso").classList.add("virar-verso")
@@ -65,6 +70,7 @@ function virarCarta(divSelecionada){
     }
 }
 
+// Criação do comparador de pares de carta
 function compararPar(){
     if(carta1.innerHTML !== carta2.innerHTML){
         carta1.querySelector(".verso").classList.remove("virar-verso")
@@ -87,12 +93,13 @@ function compararPar(){
     document.querySelector(".barreira").style.display = "none"
 }
 
+// Criação da mensagem de finalização 
 function mostrarNumeroJogadas(){
     if(paresFeitos.length === (numeroCartas / 2)){
         alert(`Parabens, você ganhou em ${relogio - 1} segundos e ${numeroJogadas} jogadas!!!`)
     }
 }
-
+// Criação do reset do jogo
 function finalizarJogo(){
     if(paresFeitos.length === (numeroCartas / 2)){
         clearInterval(intervalo)
